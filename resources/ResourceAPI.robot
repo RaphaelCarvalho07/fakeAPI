@@ -17,16 +17,23 @@ Conectar a minha API
 
 ######## AÇÕES
 Requisitar todos os livros
-    ${RESPOSTA}       GET On Session     fakeAPI      Books
-    Log               ${RESPOSTA.text}
+    ${RESPOSTA}          GET On Session     fakeAPI      Books
+    Set Test Variable    ${RESPOSTA}
+    Log                  ${RESPOSTA.text}
 
-
+Requisitar o livro "${ID_LIVRO}"
+    ${RESPOSTA}          GET On Session     fakeAPI      Books/${ID_LIVRO}
+    Set Test Variable    ${RESPOSTA}
+    Log                  ${RESPOSTA.text}
 
 ######### Conferências
 Conferir status code
-    [Arguments]        ${STATUSCODE_DESEJADO}
+    [Arguments]                   ${STATUSCODE_DESEJADO}
     Should Be Equal As Strings    ${RESPOSTA.status_code}    ${STATUSCODE_DESEJADO}
 
 Conferir o reason
-    [Arguments]        ${REASON_DESEJADO}
+    [Arguments]                   ${REASON_DESEJADO}
     Should Be Equal As Strings    ${RESPOSTA.reason}    ${REASON_DESEJADO}
+
+Conferir se retorna uma lista com "${QTDE_LIVRO}" livros
+    Length Should Be    ${RESPOSTA.json()}    ${QTDE_LIVRO}
