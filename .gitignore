@@ -112,3 +112,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+### Robotframework
+# Ignorar arquivos gerados após cada execução de log, report, output, etc
+results/
