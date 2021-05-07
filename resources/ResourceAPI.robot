@@ -6,14 +6,14 @@ Library           Collections
 
 *** Variables ***
 ${URL_API}         https://fakerestapi.azurewebsites.net/api/v1/
-
-
+&{BOOK_15}         id=15
+...                title=Book 15
+...                pageCount=1500
 
 *** Keywords ***
 ######## SETUP E TEARDOWNS
 Conectar a minha API
     Create Session    fakeAPI    ${URL_API}
-
 
 ######## AÇÕES
 Requisitar todos os livros
@@ -36,4 +36,14 @@ Conferir o reason
     Should Be Equal As Strings    ${RESPOSTA.reason}    ${REASON_DESEJADO}
 
 Conferir se retorna uma lista com "${QTDE_LIVRO}" livros
-    Length Should Be    ${RESPOSTA.json()}    ${QTDE_LIVRO}
+    Length Should Be              ${RESPOSTA.json()}    ${QTDE_LIVRO}
+
+Conferir se retorna todos os dados do livro 15
+    Dictionary Should Contain Item      ${RESPOSTA.json()}     id             ${BOOK_15.id}
+    Dictionary Should Contain Item      ${RESPOSTA.json()}     title          ${BOOK_15.title}
+    Dictionary Should Contain Item      ${RESPOSTA.json()}     pageCount      ${BOOK_15.pageCount}
+
+    Should Not Be Empty                 ${RESPOSTA.json()["description"]}
+    Should Not Be Empty                 ${RESPOSTA.json()["excerpt"]}
+    Should Not Be Empty                 ${RESPOSTA.json()["publishDate"]}
+    
