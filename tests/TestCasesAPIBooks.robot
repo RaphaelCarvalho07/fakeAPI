@@ -26,6 +26,7 @@ Cadastrar um novo livro (POST)
       Conferir se retorna todos os dados cadastrados do livro "777"
 Alterar um livro (PUT)
       Alterar o livro "150"
-#     - Conferir se retorna todos os dados alterados do livro 150
+      Conferir status code    200
+      Conferir se retorna todos os dados alterados do livro "666"
 #TO-DO: Deletar um livro (DELETE)
 #     - Conferir se deleta o livro 200 (o response body deve ser vazio)

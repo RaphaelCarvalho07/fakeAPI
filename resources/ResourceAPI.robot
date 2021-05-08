@@ -82,6 +82,9 @@ Conferir se retorna todos os dados do livro 15
 Conferir se retorna todos os dados cadastrados do livro "${ID_LIVRO}"
     Conferir livro    ${ID_LIVRO}
 
+Conferir se retorna todos os dados alterados do livro "${ID_LIVRO}"
+    Conferir livro    ${ID_LIVRO}
+
 Conferir livro
     [Arguments]   ${ID_LIVRO}
     Dictionary Should Contain Item    ${RESPOSTA.json()}    id             ${BOOK_${ID_LIVRO}.ID}
