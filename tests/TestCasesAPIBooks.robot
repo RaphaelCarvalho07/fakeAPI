@@ -24,9 +24,16 @@ Cadastrar um novo livro (POST)
       Conferir status code    200
       Conferir o reason       OK
       Conferir se retorna todos os dados cadastrados do livro "777"
+
 Alterar um livro (PUT)
       Alterar o livro "150"
       Conferir status code    200
+      Conferir o reason       OK
       Conferir se retorna todos os dados alterados do livro "666"
-#TO-DO: Deletar um livro (DELETE)
-#     - Conferir se deleta o livro 200 (o response body deve ser vazio)
+
+Deletar um livro (DELETE)
+      Excluir o livro "200"
+      Conferir status code    200
+      Conferir o reason       OK
+#     (o response body deve ser vazio)
+      Conferir se excluiu o livro "200"

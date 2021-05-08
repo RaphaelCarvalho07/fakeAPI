@@ -57,6 +57,10 @@ Alterar o livro "${ID_LIVRO}"
     Log                                       ${RESPOSTA.text}
     Set Test Variable                         ${RESPOSTA}
 
+Excluir o livro "${ID_LIVRO}"
+    ${RESPOSTA}          Delete On Session    fakeAPI      Books/${ID_LIVRO}
+    Log                                       ${RESPOSTA.text}
+    Set Test Variable                         ${RESPOSTA}
 
 ######### Conferências
 Conferir status code
@@ -93,3 +97,6 @@ Conferir livro
     Dictionary Should Contain Item    ${RESPOSTA.json()}    pageCount      ${BOOK_${ID_LIVRO}.PageCount}
     Dictionary Should Contain Item    ${RESPOSTA.json()}    excerpt        ${BOOK_${ID_LIVRO}.Excerpt}
     Dictionary Should Contain Item    ${RESPOSTA.json()}    publishDate    ${BOOK_${ID_LIVRO}.PublishDate}
+
+Conferir se excluiu o livro "${ID_LIVRO}"
+    Should Be Empty          ${RESPOSTA.content}
